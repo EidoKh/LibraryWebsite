@@ -10,7 +10,7 @@ const routes = [
     },
     {
         path: '/books/:id/edit',
-        name: 'bookss',
+        name: 'books',
         component: BooksIndex,
         props: true,
 ]
