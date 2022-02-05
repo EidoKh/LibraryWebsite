@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '/src/pages/HomePage.vue'
-import BooksIndex from '@/pages/books/BooksIndex'
+import BooksIndex from '../pages/books/BooksIndex.vue'
 
 const routes = [
     {
@@ -9,10 +9,11 @@ const routes = [
         component: HomePage,
     },
     {
-        path: '/books/:id/edit',
+        path: '/books/:lang',
         name: 'books',
         component: BooksIndex,
         props: true,
+    },
 ]
 const router = createRouter({
     history: createWebHistory(),
