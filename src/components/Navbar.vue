@@ -50,9 +50,9 @@
                             duration-500
                         "
                     >
-                        <router-link :to="link.url">{{
+                        <label @click="goToUrl(link.url)">{{
                             link.name
-                        }}</router-link>
+                        }}</label>
                     </div>
                 </div>
                 <!-- Burger Nav Button on Mobile -->
@@ -111,6 +111,8 @@
 </template>
 <script setup>
 import { reactive, ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 let isOpen = ref(false)
 const links = reactive([
@@ -120,4 +122,7 @@ const links = reactive([
     { name: 'الفئات', url: '/categories' },
     { name: 'حول', url: '/about' },
 ])
+function goToUrl(url) {
+    router.push({ name: 'books', params: { url: url } })
+}
 </script>
