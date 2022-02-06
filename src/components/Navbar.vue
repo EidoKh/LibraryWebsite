@@ -15,14 +15,16 @@
                 "
             >
                 <div class="p-4">
-                    <div class="font-extrabold tracking-widest text-xl">
+                    <div class="tracking-widest text-2xl font-bold">
                         <router-link
                             class="
                                 transition
                                 duration-500
                                 hover:text-indigo-500
                             "
-                            to="/"
+                            :to="{
+                                path: '/',
+                            }"
                             >المكتبة</router-link
                         >
                     </div>
@@ -50,16 +52,16 @@
                             duration-500
                         "
                     >
-                        <label @click="goToUrl(link.url)">{{
-                            link.name
+                        <label class="cursor-pointer" @click="goToUrl(link)">{{
+                            link.label
                         }}</label>
                     </div>
                 </div>
                 <!-- Burger Nav Button on Mobile -->
                 <div
-                    @click="isOpen = !isOpen"
                     id="nav-open"
                     class="p-4 md:hidden"
+                    @click="isOpen = !isOpen"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -96,13 +98,13 @@
             >
                 <div class="p-2 divide-y divide-gray-600 flex flex-col">
                     <div
-                        class="p-2 font-semibold hover:text-indigo-700"
                         v-for="(link, index) in links"
                         :key="index"
+                        class="p-2 font-semibold hover:text-indigo-700"
                     >
-                        <router-link :to="link.url">{{
-                            link.name
-                        }}</router-link>
+                        <label class="cursor-pointer" @click="goToUrl(link)">{{
+                            link.label
+                        }}</label>
                     </div>
                 </div>
             </div>
@@ -116,13 +118,16 @@ const router = useRouter()
 
 let isOpen = ref(false)
 const links = reactive([
-    { name: 'العربية', url: '/books/arabic' },
-    { name: 'الإنكليزية', url: '/books/english' },
-    { name: 'كوردي', url: '/books/kurdish' },
-    { name: 'الفئات', url: '/categories' },
-    { name: 'حول', url: '/about' },
+    { label: 'العربية', name: 'books', slug: 'arabic' },
+    { label: 'الإنكليزية', name: 'books', slug: 'english' },
+    { label: 'كوردي', name: 'books', slug: 'kurdish' },
+    { label: 'كل الكتب', name: 'books', slug: '' },
+    { label: 'الفئات', name: 'categories', slug: '' },
 ])
-function goToUrl(url) {
-    router.push({ name: 'books', params: { url: url } })
+function goToUrl(link) {
+    router.push({
+        name: link.name,
+        params: { slug: link.slug },
+    })
 }
 </script>

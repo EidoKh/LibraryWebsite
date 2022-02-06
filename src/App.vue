@@ -6,7 +6,7 @@ import NavbarVue from './components/Navbar.vue'
 
 <template>
     <NavbarVue />
-    <div lang="ar" dir="rtl">
+    <div lang="ar" dir="rtl" class="-mt-16">
         <router-view></router-view>
     </div>
 </template>

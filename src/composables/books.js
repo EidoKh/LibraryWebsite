@@ -6,10 +6,23 @@ export default function useBooks() {
     const most_liked_books = ref([])
     const book = ref([])
     const errors = ref('')
+    const books = ref([])
 
     const getMostLikedBooks = async () => {
         let response = await axios.get(config.APP_URL + '/api/most-liked')
         most_liked_books.value = response.data.data
+    }
+    const getBooks = async (lang = '', keyword = '') => {
+        let response = await axios.get(
+            `${config.APP_URL}/api/all_books?lang=${lang}&search=${keyword}`
+        )
+        books.value = response.data.data
+    }
+    const getCategoryBooks = async (category_id) => {
+        let response = await axios.get(
+            `${config.APP_URL}/api/category_books/${category_id}`
+        )
+        books.value = response.data.data
     }
 
     return {
@@ -17,5 +30,8 @@ export default function useBooks() {
         book,
         errors,
         getMostLikedBooks,
+        getBooks,
+        books,
+        getCategoryBooks,
     }
 }

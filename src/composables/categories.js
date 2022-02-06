@@ -7,11 +7,23 @@ export default function useCategories() {
     const category = ref([])
     const errors = ref('')
 
-    const getCategories = async () => {
+    const getCategories = async (keyword = '') => {
+        let response = await axios.get(
+            `${config.APP_URL}/api/all-categories?search=${keyword}`
+        )
+        categories.value = response.data.data
+    }
+    const getRecommendedCategories = async () => {
         let response = await axios.get(
             config.APP_URL + '/api/random-categories'
         )
         categories.value = response.data.data
+    }
+    const getCategory = async (id) => {
+        let response = await axios.get(
+            `${config.APP_URL}/api/all-categories/${id}`
+        )
+        category.value = response.data.data[0]
     }
 
     return {
@@ -19,5 +31,7 @@ export default function useCategories() {
         category,
         errors,
         getCategories,
+        getRecommendedCategories,
+        getCategory,
     }
 }

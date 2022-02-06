@@ -12,7 +12,6 @@
         /><br />
         <books-section section_title="كتب جديدة" :books="most_liked_books" />
     </div>
-    {{ categories }}
     <router-link :to="{ name: 'books', props: { someUnrelatedVar: 'arabic' } }"
         >Places</router-link
     >
@@ -24,10 +23,10 @@ import RecommendedCategories from '../components/RecommendedCategories.vue'
 import useCategories from '../composables/categories'
 import useBooks from '../composables/books'
 import { onMounted } from '@vue/runtime-core'
-const { getCategories, categories } = useCategories()
+const { getRecommendedCategories, categories } = useCategories()
 const { getMostLikedBooks, most_liked_books } = useBooks()
 onMounted(() => {
-    getCategories()
+    getRecommendedCategories()
     getMostLikedBooks()
 })
 </script>

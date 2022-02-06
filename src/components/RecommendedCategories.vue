@@ -15,9 +15,8 @@
                 v-for="category in categories"
                 :key="category"
             >
-                <a
-                    class="st-link"
-                    href="https://tourexpect.com/tour-packages/?location_id=10987"
+                <router-link
+                    :to="{ name: 'category', params: { slug: category.id } }"
                 >
                     <img
                         class="
@@ -37,20 +36,17 @@
                             category.category_image
                         "
                     />
-                </a>
-                <div class="h-full">
-                    <div
-                        class="absolute top-1/2 left-1/2 text-center"
-                        style="transform: translate(-50%, -50%)"
-                    >
-                        <a
-                            href="https://tourexpect.com/tour-packages/?location_id=10987"
-                            class="text-xl font-bold text-white"
+                    <div class="h-full">
+                        <div
+                            class="absolute top-1/2 left-1/2 text-center"
+                            style="transform: translate(-50%, -50%)"
                         >
-                            {{ category.category_name }}
-                        </a>
-                    </div>
-                </div>
+                            <label class="text-xl font-bold text-white">
+                                {{ category.category_name }}
+                            </label>
+                        </div>
+                    </div></router-link
+                >
             </div>
             <!--  -->
         </div>
@@ -61,6 +57,7 @@ import { config } from '../../src/config'
 export default {
     props: {
         categories: {
+            default: null,
             type: Array,
         },
     },
