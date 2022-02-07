@@ -5,18 +5,23 @@
                 id="all-category"
                 class="text-right text-5xl text-gray-600 my-4"
             >
-                الفئات المقترحة
+                {{ title }}
             </h1>
         </div>
-        <div class="grid grid-cols-3 gap-4 my-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-                class="relative overflow-hidden rounded"
-                style="height: 256px"
                 v-for="category in categories"
                 :key="category"
+                class="relative overflow-hidden rounded"
+                style="height: 256px"
             >
                 <router-link
-                    :to="{ name: 'category', params: { slug: category.id } }"
+                    :to="{
+                        name: 'category',
+                        params: {
+                            slug: category.slug,
+                        },
+                    }"
                 >
                     <img
                         class="
@@ -59,6 +64,10 @@ export default {
         categories: {
             default: null,
             type: Array,
+        },
+        title: {
+            default: '',
+            type: String,
         },
     },
     setup() {

@@ -8,66 +8,84 @@
                 {{ section_title }}
             </h1>
         </div>
-        <div class="grid grid-cols-5 gap-4 my-2">
-            <!--1------------------------------>
+        <div
+            class="
+                grid grid-cols-1
+                sm:grid-cols-2
+                md:grid-cols-3
+                lg:grid-cols-4
+                xl:grid-cols-5
+                gap-6
+                my-2
+            "
+        >
             <div v-for="book in books" :key="book">
                 <!-- <div class=" bg-gray-100 flex items-center justify-center"> -->
-                <div
-                    class="
-                        bg-white
-                        rounded-xl
-                        overflow-hidden
-                        shadow-xl
-                        hover:scale-105 hover:shadow-2xl
-                        transform
-                        duration-500
-                        cursor-pointer
-                    "
+                <router-link
+                    :to="{
+                        name: 'book',
+                        params: {
+                            slug: book.slug,
+                        },
+                    }"
                 >
-                    <div class="p-4">
-                        <!-- <span
-              class="
-                bg-red-500
-                py-2
-                px-4
-                text-sm
-                font-semibold
-                text-white
-                rounded-full
-                cursor-pointer
-              "
-              >-30% Sale</span
-            > -->
-                        <h1
-                            class="
-                                mt-4
-                                text-lg
-                                font-bold
-                                hover:underline
-                                cursor-pointer
-                            "
-                        >
-                            {{ book.title }}
-                        </h1>
-                        <p class="mt-2 font-sans text-gray-700">
-                            {{ book.author }}
-                        </p>
+                    <div
+                        class="
+                            bg-white
+                            rounded-xl
+                            overflow-hidden
+                            shadow-xl
+                            hover:scale-105 hover:shadow-2xl
+                            transform
+                            duration-500
+                            cursor-pointer
+                        "
+                    >
+                        <div class="relative">
+                            <img
+                                class="w-full h-96"
+                                :src="
+                                    APP_URL +
+                                    '/images/books_images/' +
+                                    book.book_image
+                                "
+                            />
+                        </div>
+                        <div class="p-4">
+                            <!-- <span
+                                  class="
+                    bg-red-500
+                    py-2
+                    px-4
+                    text-sm
+                    font-semibold
+                    text-white
+                    rounded-full
+                    cursor-pointer
+                                  "
+                                  >-30% Sale</span
+                                > -->
+                            <h1
+                                class="
+                                    mt-4
+                                    text-lg
+                                    font-bold
+                                    cursor-pointer
+                                    h-16
+                                "
+                            >
+                                {{ book.title }}
+                            </h1>
+                            <p class="mt-2 font-sans text-gray-700">
+                                {{ book.author }}
+                            </p>
+                            <h1 class="mt-4 text-lg font-bold cursor-pointer">
+                                {{ book.price + ' د.ع ' }}
+                            </h1>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <img
-                            class="w-full h-96"
-                            :src="
-                                APP_URL +
-                                '/images/books_images/' +
-                                book.book_image
-                            "
-                        />
-                    </div>
-                </div>
-                <!-- </div> -->
+                </router-link>
             </div>
-            <!-- component -->
-            <!-- Create By Joker Banny -->
         </div>
     </div>
 </template>
@@ -79,6 +97,7 @@ export default {
             type: Array,
         },
         section_title: {
+            default: '',
             type: String,
         },
     },

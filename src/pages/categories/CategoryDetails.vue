@@ -8,8 +8,6 @@
         />
         <div class="container mx-auto px-6 mt-12">
             <books-section :books="books" />
-            <div class="mt-72">{{ books }}</div>
-            <div class="mt-8 bg-slate-400">{{ category }}</div>
         </div>
     </div>
 </template>
@@ -24,7 +22,7 @@ export default {
     components: { DetailsHero, BooksSection },
     props: {
         slug: {
-            default: null,
+            default: 'category',
             type: String,
         },
     },

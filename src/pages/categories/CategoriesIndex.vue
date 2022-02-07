@@ -6,6 +6,9 @@
             @set_search="setValueToSearch($event)"
         />
         <div class="container mx-auto px-6 mt-12">
+            <categories-section :categories="categories" />
+        </div>
+        <!-- <div class="container mx-auto px-6 mt-12">
             <div>
                 <div class="grid grid-cols-3 gap-4 my-2">
                     <div
@@ -51,19 +54,19 @@
                             </div>
                         </div>
                     </div>
-                    <!--  -->
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
 import { onMounted } from '@vue/runtime-core'
 import PageHero from '../../components/PageHero.vue'
+import CategoriesSection from '../../components/CategoriesSection.vue'
 import useCategories from '../../composables/categories'
 import { config } from '../../config'
 export default {
-    components: { PageHero },
+    components: { PageHero, CategoriesSection },
     setup() {
         const { getCategories, categories } = useCategories()
         onMounted(() => {

@@ -14,49 +14,7 @@
             @set_search="setValueToSearch($event)"
         />
         <div class="container mx-auto px-6 my-12">
-            <div v-if="books.length" class="grid grid-cols-5 gap-4 my-2">
-                <div v-for="book in books" :key="book">
-                    <div
-                        class="
-                            bg-white
-                            rounded-xl
-                            overflow-hidden
-                            shadow-xl
-                            hover:scale-105 hover:shadow-2xl
-                            transform
-                            duration-500
-                            cursor-pointer
-                        "
-                    >
-                        <div class="p-4">
-                            <h1
-                                class="
-                                    mt-4
-                                    text-lg
-                                    font-bold
-                                    hover:underline
-                                    cursor-pointer
-                                "
-                            >
-                                {{ book.title }}
-                            </h1>
-                            <p class="mt-2 font-sans text-gray-700">
-                                {{ book.author }}
-                            </p>
-                        </div>
-                        <div class="relative">
-                            <img
-                                class="w-full h-96"
-                                :src="
-                                    APP_URL +
-                                    '/images/books_images/' +
-                                    book.book_image
-                                "
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <books-section v-if="books.length" :books="books" />
             <div v-else>
                 <h2 class="text-xl">ليس هناك نتائج مطابقة</h2>
             </div>
@@ -69,8 +27,9 @@ import { config } from '../../config'
 import { onMounted, watch } from 'vue'
 import useBooks from '../../composables/books'
 import PageHero from '../../components/PageHero.vue'
+import BooksSection from '../../components/BooksSection.vue'
 export default {
-    components: { PageHero },
+    components: { PageHero, BooksSection },
     props: {
         slug: {
             default: '',

@@ -3,6 +3,7 @@ import HomePage from '/src/pages/HomePage.vue'
 import BooksIndex from '../pages/books/BooksIndex.vue'
 import CategoriesIndex from '../pages/categories/CategoriesIndex.vue'
 import CategoryDetails from '../pages/categories/CategoryDetails.vue'
+import BookDetails from '../pages/books/BookDetails.vue'
 
 const routes = [
     {
@@ -25,6 +26,20 @@ const routes = [
         path: '/categories/:slug?',
         name: 'category',
         component: CategoryDetails,
+        // props: (route) => ({
+        //     category_id: route.params.category_id,
+        //     slug: route.params.slug,
+        // }),
+        props: true,
+    },
+    {
+        path: '/book/:slug?',
+        name: 'book',
+        component: BookDetails,
+        // props: (route) => ({
+        //     book_id: route.params.book_id,
+        //     slug: route.params.slug,
+        // }),
         props: true,
     },
 ]

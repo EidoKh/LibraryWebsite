@@ -19,9 +19,9 @@ export default function useCategories() {
         )
         categories.value = response.data.data
     }
-    const getCategory = async (id) => {
+    const getCategory = async (slug) => {
         let response = await axios.get(
-            `${config.APP_URL}/api/all-categories/${id}`
+            `${config.APP_URL}/api/all-categories/${slug}`
         )
         category.value = response.data.data[0]
     }

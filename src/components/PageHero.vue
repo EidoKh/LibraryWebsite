@@ -16,7 +16,7 @@
                     bg-gray-900 bg-opacity-50
                 "
             >
-                <div class="text-center w-full sm:w-1/3">
+                <div class="text-center container mx-auto px-6 lg:w-1/2">
                     <h1
                         class="
                             text-2xl

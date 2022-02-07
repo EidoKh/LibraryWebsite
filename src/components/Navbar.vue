@@ -10,26 +10,28 @@
                     flex flex-row
                     justify-between
                     z-10
-                    text-indigo-200
                     bg-transparent
                 "
             >
                 <div class="p-4">
                     <div class="tracking-widest text-2xl font-bold">
                         <router-link
-                            class="
-                                transition
-                                duration-500
-                                hover:text-indigo-500
-                            "
+                            class="transition"
                             :to="{
                                 path: '/',
                             }"
-                            >المكتبة</router-link
-                        >
+                            ><img
+                                class="
+                                    w-14
+                                    rounded-full
+                                    duration-500
+                                    hover:shadow-2xl hover:w-16
+                                "
+                                src="/logo.jpg"
+                                alt="Orshina"
+                        /></router-link>
                     </div>
                 </div>
-                <!-- Nav Items Working on Tablet & Bigger Sceen -->
                 <div
                     class="
                         p-4
@@ -43,18 +45,24 @@
                     <div
                         v-for="(link, index) in links"
                         :key="index"
-                        class="
-                            mx-4
-                            text-lg
-                            border-b-2 border-transparent
-                            hover:border-b-2 hover:border-indigo-300
-                            transition
-                            duration-500
-                        "
+                        class="mx-4 text-lg transition"
                     >
-                        <label class="cursor-pointer" @click="goToUrl(link)">{{
-                            link.label
-                        }}</label>
+                        <router-link
+                            class="
+                                duration-500
+                                cursor-pointer
+                                border-b-2 border-transparent
+                                text-orange-500
+                                hover:text-orange-400
+                                hover:border-b-2
+                                hover:border-orange-400
+                            "
+                            :to="{
+                                name: link.name,
+                                params: { slug: link.slug },
+                            }"
+                            >{{ link.label }}</router-link
+                        >
                     </div>
                 </div>
                 <!-- Burger Nav Button on Mobile -->
@@ -131,3 +139,10 @@ function goToUrl(link) {
     })
 }
 </script>
+<style>
+.router-link-active {
+    color: #fb923c !important;
+    border-bottom-width: 2px;
+    border-color: #fb923c !important;
+}
+</style>

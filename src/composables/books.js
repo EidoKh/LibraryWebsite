@@ -24,6 +24,12 @@ export default function useBooks() {
         )
         books.value = response.data.data
     }
+    const getBook = async (slug) => {
+        let response = await axios.get(
+            `${config.APP_URL}/api/book_details/${slug}`
+        )
+        book.value = response.data.data[0]
+    }
 
     return {
         most_liked_books,
@@ -33,5 +39,6 @@ export default function useBooks() {
         getBooks,
         books,
         getCategoryBooks,
+        getBook,
     }
 }

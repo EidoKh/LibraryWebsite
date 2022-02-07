@@ -1,33 +1,45 @@
 <template>
-  <header
-    id="up"
-    class="bg-fixed bg-no-repeat bg-center bg-cover h-screen relative"
-  >
-    <!-- Overlay Background + Center Control -->
-    <div
-      class="h-screen bg-opacity-50 bg-black flex items-center justify-center"
-      style="background: rgba(0, 0, 0, 0.5)"
+    <header
+        id="up"
+        class="bg-fixed bg-no-repeat bg-center bg-cover h-screen relative"
     >
-      <div class="mx-2 text-center">
-        <h1
-          class="text-gray-100 font-extrabold text-4xl xs:text-5xl md:text-6xl"
+        <!-- Overlay Background + Center Control -->
+        <div
+            class="
+                h-screen
+                bg-opacity-50 bg-black
+                flex
+                items-center
+                justify-center
+            "
+            style="background: rgba(0, 0, 0, 0.5)"
         >
-          تصفح أروع الكتب
-        </h1>
-        <h2
-          class="
-            text-gray-200
-            font-extrabold
-            text-3xl
-            xs:text-4xl
-            md:text-5xl
-            leading-tight
-            mt-2
-          "
-        >
-          ستجد كل ما ترغب به هنا في مكتبتنا
-        </h2>
-        <div class="inline-flex">
+            <div class="mx-2 text-center">
+                <h1
+                    class="
+                        text-gray-100
+                        font-extrabold
+                        text-4xl
+                        xs:text-5xl
+                        md:text-6xl
+                    "
+                >
+                    تصفح أروع الكتب
+                </h1>
+                <h2
+                    class="
+                        text-gray-200
+                        font-extrabold
+                        text-3xl
+                        xs:text-4xl
+                        md:text-5xl
+                        leading-tight
+                        mt-2
+                    "
+                >
+                    ستجد كل ما ترغب به هنا في مكتبتنا
+                </h2>
+                <!-- <div class="inline-flex">
           <button
             class="
               p-2
@@ -72,10 +84,10 @@
               Learn More
             </button></a
           >
+        </div> -->
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
 </template>
 <style>
 /*
@@ -109,6 +121,6 @@
 		} */
 /* Default background by https://www.pexels.com/@knownasovan */
 header {
-  background: url("https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background: url('https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
 }
 </style>
