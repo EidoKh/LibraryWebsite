@@ -4,6 +4,9 @@ import BooksIndex from '../pages/books/BooksIndex.vue'
 import CategoriesIndex from '../pages/categories/CategoriesIndex.vue'
 import CategoryDetails from '../pages/categories/CategoryDetails.vue'
 import BookDetails from '../pages/books/BookDetails.vue'
+import AuthorsIndex from '../pages/authors/AuthorsIndex.vue'
+import AuthorDetails from '../pages/authors/AuthorDetails.vue'
+import TestPage from '../pages/TestPage.vue'
 
 const routes = [
     {
@@ -36,6 +39,33 @@ const routes = [
         path: '/book/:slug?',
         name: 'book',
         component: BookDetails,
+        // props: (route) => ({
+        //     book_id: route.params.book_id,
+        //     slug: route.params.slug,
+        // }),
+        props: true,
+    },
+    {
+        path: '/authors',
+        name: 'authors',
+        component: AuthorsIndex,
+    },
+
+    {
+        path: '/authors/:slug?',
+        name: 'author',
+        component: AuthorDetails,
+        // props: (route) => ({
+        //     book_id: route.params.book_id,
+        //     slug: route.params.slug,
+        // }),
+        props: true,
+    },
+
+    {
+        path: '/test/:slug?',
+        name: 'test',
+        component: TestPage,
         // props: (route) => ({
         //     book_id: route.params.book_id,
         //     slug: route.params.slug,

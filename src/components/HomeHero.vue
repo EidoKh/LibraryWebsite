@@ -121,6 +121,6 @@
 		} */
 /* Default background by https://www.pexels.com/@knownasovan */
 header {
-    background: url('https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background: url('/vertical-library.jpg');
 }
 </style>

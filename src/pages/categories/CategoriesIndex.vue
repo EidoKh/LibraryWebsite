@@ -5,7 +5,7 @@
             component_title="كل الفئات"
             @set_search="setValueToSearch($event)"
         />
-        <div class="container mx-auto px-6 mt-12">
+        <div class="container mx-auto px-6 my-12">
             <categories-section :categories="categories" />
         </div>
         <!-- <div class="container mx-auto px-6 mt-12">

@@ -1,92 +1,103 @@
 <template>
     <div class="my-12">
-        <div>
-            <h1
-                id="all-category"
-                class="text-right text-5xl text-gray-600 my-4"
-            >
-                {{ section_title }}
-            </h1>
-        </div>
-        <div
-            class="
-                grid grid-cols-1
-                sm:grid-cols-2
-                md:grid-cols-3
-                lg:grid-cols-4
-                xl:grid-cols-5
-                gap-6
-                my-2
-            "
-        >
-            <div v-for="book in books" :key="book">
-                <!-- <div class=" bg-gray-100 flex items-center justify-center"> -->
-                <router-link
-                    :to="{
-                        name: 'book',
-                        params: {
-                            slug: book.slug,
-                        },
-                    }"
+        <div v-if="books.length > 0">
+            <div>
+                <h1
+                    id="all-category"
+                    class="text-right text-4xl text-gray-600 my-4"
                 >
-                    <div
-                        class="
-                            bg-white
-                            rounded-xl
-                            overflow-hidden
-                            shadow-xl
-                            hover:scale-105 hover:shadow-2xl
-                            transform
-                            duration-500
-                            cursor-pointer
-                        "
+                    {{ section_title }}
+                </h1>
+            </div>
+            <div
+                class="
+                    grid grid-cols-1
+                    sm:grid-cols-3
+                    md:grid-cols-4
+                    lg:grid-cols-5
+                    xl:grid-cols-7
+                    gap-6
+                    my-2
+                "
+            >
+                <div v-for="book in books" :key="book">
+                    <!-- <div class=" bg-gray-100 flex items-center justify-center"> -->
+                    <router-link
+                        :to="{
+                            name: 'book',
+                            params: {
+                                slug: book.slug,
+                            },
+                        }"
                     >
-                        <div class="relative">
-                            <img
-                                class="w-full h-96"
-                                :src="
-                                    APP_URL +
-                                    '/images/books_images/' +
-                                    book.book_image
-                                "
-                            />
+                        <div
+                            class="
+                                bg-white
+                                rounded-xl
+                                overflow-hidden
+                                shadow-xl
+                                hover:scale-105 hover:shadow-2xl
+                                transform
+                                duration-500
+                                cursor-pointer
+                                w-5/6
+                                sm:w-full
+                                md:w-full
+                                lg:w-full
+                                xl:w-full
+                                mx-auto
+                            "
+                        >
+                            <div class="relative">
+                                <img
+                                    class="
+                                        w-full
+                                        h-96
+                                        sm:h-64
+                                        md:h-64
+                                        lg:h-64
+                                        xl:h-64
+                                    "
+                                    :src="
+                                        APP_URL +
+                                        '/images/books_images/' +
+                                        book.book_image
+                                    "
+                                />
+                            </div>
+                            <div class="p-4">
+                                <h1
+                                    class="
+                                        text-base
+                                        font-bold
+                                        cursor-pointer
+                                        h-10
+                                    "
+                                >
+                                    {{ book.title }}
+                                </h1>
+                                <p class="mt-2 font-sans text-gray-700">
+                                    {{ book.author }}
+                                </p>
+                                <h1
+                                    class="
+                                        mt-1
+                                        bg-slate-200
+                                        text-lg
+                                        font-bold
+                                        rounded
+                                        cursor-pointer
+                                    "
+                                >
+                                    {{ book.price + ' د.ع ' }}
+                                </h1>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <!-- <span
-                                  class="
-                    bg-red-500
-                    py-2
-                    px-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    rounded-full
-                    cursor-pointer
-                                  "
-                                  >-30% Sale</span
-                                > -->
-                            <h1
-                                class="
-                                    mt-4
-                                    text-lg
-                                    font-bold
-                                    cursor-pointer
-                                    h-16
-                                "
-                            >
-                                {{ book.title }}
-                            </h1>
-                            <p class="mt-2 font-sans text-gray-700">
-                                {{ book.author }}
-                            </p>
-                            <h1 class="mt-4 text-lg font-bold cursor-pointer">
-                                {{ book.price + ' د.ع ' }}
-                            </h1>
-                        </div>
-                    </div>
-                </router-link>
+                    </router-link>
+                </div>
             </div>
         </div>
+        <div v-else class="text-4xl py-14">لا توجد كُـتب</div>
     </div>
 </template>
 <script>

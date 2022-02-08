@@ -104,15 +104,17 @@
                     z-10
                 "
             >
-                <div class="p-2 divide-y divide-gray-600 flex flex-col">
+                <div class="p-2 flex flex-col text-right">
                     <div
                         v-for="(link, index) in links"
                         :key="index"
                         class="p-2 font-semibold hover:text-indigo-700"
                     >
-                        <label class="cursor-pointer" @click="goToUrl(link)">{{
-                            link.label
-                        }}</label>
+                        <label
+                            class="cursor-pointer text-orange-500"
+                            @click="goToUrl(link)"
+                            >{{ link.label }}</label
+                        >
                     </div>
                 </div>
             </div>
@@ -131,6 +133,8 @@ const links = reactive([
     { label: 'كوردي', name: 'books', slug: 'kurdish' },
     { label: 'كل الكتب', name: 'books', slug: '' },
     { label: 'الفئات', name: 'categories', slug: '' },
+    { label: 'المؤلفون', name: 'authors', slug: '' },
+    { label: 'تجريبي', name: 'test', slug: '' },
 ])
 function goToUrl(link) {
     router.push({

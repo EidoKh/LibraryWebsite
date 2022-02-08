@@ -23,9 +23,6 @@
         /><br />
         <books-section section_title="كتب جديدة" :books="most_liked_books" />
     </div>
-    <router-link :to="{ name: 'books', props: { someUnrelatedVar: 'arabic' } }"
-        >Places</router-link
-    >
 </template>
 <script setup>
 import HomeHero from '../components/HomeHero.vue'
