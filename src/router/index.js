@@ -6,6 +6,7 @@ import CategoryDetails from '../pages/categories/CategoryDetails.vue'
 import BookDetails from '../pages/books/BookDetails.vue'
 import AuthorsIndex from '../pages/authors/AuthorsIndex.vue'
 import AuthorDetails from '../pages/authors/AuthorDetails.vue'
+import OrderForm from '../pages/forms/OrderForm.vue'
 import TestPage from '../pages/TestPage.vue'
 
 const routes = [
@@ -62,6 +63,16 @@ const routes = [
         props: true,
     },
 
+    {
+        path: '/book/:slug?/order',
+        name: 'orderForm',
+        component: OrderForm,
+        // props: (route) => ({
+        //     book_id: route.params.book_id,
+        //     slug: route.params.slug,
+        // }),
+        props: true,
+    },
     {
         path: '/test/:slug?',
         name: 'test',

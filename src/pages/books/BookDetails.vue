@@ -167,7 +167,13 @@
                             "
                             >{{ book.price + ' د.ع ' }}</span
                         >
-                        <button
+                        <router-link
+                            :to="{
+                                name: 'orderForm',
+                                params: {
+                                    slug: book.slug,
+                                },
+                            }"
                             class="
                                 flex
                                 ml-auto
@@ -183,7 +189,7 @@
                             "
                         >
                             أطلب الآن
-                        </button>
+                        </router-link>
                         <button
                             class="
                                 rounded-full

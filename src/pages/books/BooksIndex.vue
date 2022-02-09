@@ -14,10 +14,7 @@
             @set_search="setValueToSearch($event)"
         />
         <div class="container mx-auto px-6 my-12">
-            <books-section v-if="books.length" :books="books" />
-            <div v-else>
-                <h2 class="text-xl">ليس هناك نتائج مطابقة</h2>
-            </div>
+            <books-section :books="books" />
         </div>
     </div>
 </template>

@@ -30,6 +30,16 @@ export default function useBooks() {
         )
         book.value = response.data.data[0]
     }
+    const likeBook = async (book_id) => {
+        await axios
+            .get(`${config.APP_URL}/api/like-book?book_id=${book_id}`)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     return {
         most_liked_books,
@@ -40,5 +50,6 @@ export default function useBooks() {
         books,
         getCategoryBooks,
         getBook,
+        likeBook,
     }
 }

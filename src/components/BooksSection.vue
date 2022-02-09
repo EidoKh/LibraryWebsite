@@ -22,33 +22,47 @@
             >
                 <div v-for="book in books" :key="book">
                     <!-- <div class=" bg-gray-100 flex items-center justify-center"> -->
-                    <router-link
-                        :to="{
-                            name: 'book',
-                            params: {
-                                slug: book.slug,
-                            },
-                        }"
+
+                    <div
+                        class="
+                            bg-white
+                            rounded-xl
+                            overflow-hidden
+                            shadow-xl
+                            hover:scale-105 hover:shadow-2xl
+                            transform
+                            duration-500
+                            cursor-pointer
+                            w-5/6
+                            sm:w-full
+                            md:w-full
+                            lg:w-full
+                            xl:w-full
+                            mx-auto
+                        "
                     >
-                        <div
-                            class="
-                                bg-white
-                                rounded-xl
-                                overflow-hidden
-                                shadow-xl
-                                hover:scale-105 hover:shadow-2xl
-                                transform
-                                duration-500
-                                cursor-pointer
-                                w-5/6
-                                sm:w-full
-                                md:w-full
-                                lg:w-full
-                                xl:w-full
-                                mx-auto
-                            "
-                        >
-                            <div class="relative">
+                        <div class="relative">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 absolute text-gray-400 m-2"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                @click="likeBook(book.id)"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                            <router-link
+                                :to="{
+                                    name: 'book',
+                                    params: {
+                                        slug: book.slug,
+                                    },
+                                }"
+                            >
                                 <img
                                     class="
                                         w-full
@@ -64,7 +78,16 @@
                                         book.book_image
                                     "
                                 />
-                            </div>
+                            </router-link>
+                        </div>
+                        <router-link
+                            :to="{
+                                name: 'book',
+                                params: {
+                                    slug: book.slug,
+                                },
+                            }"
+                        >
                             <div class="p-4">
                                 <h1
                                     class="
@@ -92,8 +115,8 @@
                                     {{ book.price + ' د.ع ' }}
                                 </h1>
                             </div>
-                        </div>
-                    </router-link>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +125,7 @@
 </template>
 <script>
 import { config } from '../../src/config'
+import useBooks from '../composables/books'
 export default {
     props: {
         books: {
@@ -114,7 +138,9 @@ export default {
     },
     setup() {
         let APP_URL = config.APP_URL
-        return { APP_URL }
+        const { likeBook } = useBooks()
+
+        return { APP_URL, likeBook }
     },
 }
 </script>
