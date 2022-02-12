@@ -20,7 +20,7 @@
                     my-2
                 "
             >
-                <div v-for="book in books" :key="book">
+                <div v-for="(book, index) in books" :key="book.id">
                     <!-- <div class=" bg-gray-100 flex items-center justify-center"> -->
 
                     <div
@@ -42,19 +42,35 @@
                         "
                     >
                         <div class="relative">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-6 absolute text-gray-400 m-2"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                @click="likeBook(book.id)"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
+                            <div class="absolute flex m-2">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-6"
+                                    :class="
+                                        book.isLiked == true
+                                            ? 'text-orange-500'
+                                            : 'text-gray-400'
+                                    "
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    @click="
+                                        likeDislikeThisBook(
+                                            book.id,
+                                            book.isLiked,
+                                            index
+                                        )
+                                    "
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <label class="text-white mt-1 shadow-sm">{{
+                                    book.likes > 0 ? book.likes : ''
+                                }}</label>
+                            </div>
                             <router-link
                                 :to="{
                                     name: 'book',
@@ -136,11 +152,19 @@ export default {
             type: String,
         },
     },
-    setup() {
+    setup(props) {
         let APP_URL = config.APP_URL
-        const { likeBook } = useBooks()
+        const { likeDislikeBook, getBooks } = useBooks()
+        const likeDislikeThisBook = async (id, isLiked, idx) => {
+            try {
+                props.books[idx].isLiked = !props.books[idx].isLiked
+            } catch (error) {
+                console.log(error)
+            }
+            await likeDislikeBook(id, isLiked)
+        }
 
-        return { APP_URL, likeBook }
+        return { APP_URL, likeDislikeThisBook }
     },
 }
 </script>

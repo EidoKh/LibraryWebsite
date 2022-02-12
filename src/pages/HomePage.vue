@@ -17,11 +17,7 @@
             section_title="الأكثر إعجابا"
             :books="most_liked_books"
         /><br />
-        <books-section
-            section_title="الأكثر طلبا"
-            :books="most_liked_books"
-        /><br />
-        <books-section section_title="كتب جديدة" :books="most_liked_books" />
+        <books-section section_title="كتب جديدة" :books="new_books" /><br />
     </div>
 </template>
 <script setup>
@@ -32,9 +28,11 @@ import useCategories from '../composables/categories'
 import useBooks from '../composables/books'
 import { onMounted } from '@vue/runtime-core'
 const { getRecommendedCategories, categories } = useCategories()
-const { getMostLikedBooks, most_liked_books } = useBooks()
+const { getMostLikedBooks, most_liked_books, getNewBooks, new_books } =
+    useBooks()
 onMounted(() => {
     getRecommendedCategories()
     getMostLikedBooks()
+    getNewBooks()
 })
 </script>

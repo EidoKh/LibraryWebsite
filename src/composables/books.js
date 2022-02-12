@@ -7,12 +7,18 @@ export default function useBooks() {
     const book = ref([])
     const errors = ref('')
     const books = ref([])
+    const new_books = ref([])
 
     const getMostLikedBooks = async () => {
         let response = await axios.get(config.APP_URL + '/api/most-liked')
         most_liked_books.value = response.data.data
     }
+    const getNewBooks = async () => {
+        let response = await axios.get(config.APP_URL + '/api/new-books')
+        most_liked_books.value = response.data.data
+    }
     const getBooks = async (lang = '', keyword = '') => {
+        console.log('getBooks called')
         let response = await axios.get(
             `${config.APP_URL}/api/all_books?lang=${lang}&search=${keyword}`
         )
@@ -30,15 +36,27 @@ export default function useBooks() {
         )
         book.value = response.data.data[0]
     }
-    const likeBook = async (book_id) => {
-        await axios
-            .get(`${config.APP_URL}/api/like-book?book_id=${book_id}`)
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+    const likeDislikeBook = async (book_id, is_liked) => {
+        //
+        if (is_liked) {
+            await axios
+                .get(`${config.APP_URL}/api/dislike-book/${book_id}`)
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        } else {
+            await axios
+                .get(`${config.APP_URL}/api/like-book?book_id=${book_id}`)
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
     }
 
     return {
@@ -50,6 +68,8 @@ export default function useBooks() {
         books,
         getCategoryBooks,
         getBook,
-        likeBook,
+        likeDislikeBook,
+        getNewBooks,
+        new_books,
     }
 }
