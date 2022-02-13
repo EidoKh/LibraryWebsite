@@ -7,7 +7,7 @@ import BookDetails from '../pages/books/BookDetails.vue'
 import AuthorsIndex from '../pages/authors/AuthorsIndex.vue'
 import AuthorDetails from '../pages/authors/AuthorDetails.vue'
 import OrderForm from '../pages/forms/OrderForm.vue'
-import TestPage from '../pages/TestPage.vue'
+import TestPage from '../pages/auth/Login.vue'
 
 const routes = [
     {

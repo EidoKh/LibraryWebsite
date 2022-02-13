@@ -12,10 +12,11 @@ export default function useBooks() {
     const getMostLikedBooks = async () => {
         let response = await axios.get(config.APP_URL + '/api/most-liked')
         most_liked_books.value = response.data.data
+        console.log(most_liked_books.value)
     }
     const getNewBooks = async () => {
         let response = await axios.get(config.APP_URL + '/api/new-books')
-        most_liked_books.value = response.data.data
+        new_books.value = response.data.data
     }
     const getBooks = async (lang = '', keyword = '') => {
         console.log('getBooks called')
